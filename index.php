@@ -1,9 +1,20 @@
 <?php
 
+$length = $_GET["psw_length"];
+$pw = '';
 
+function generate_pw() {
+  
+  $password_length = $length;
+  $pw = '';
+
+  for($i = 0; $i < $password_length; $i++) {
+    $pw .= chr(rand(0, 100));
+  }
+  return $pw;
+}
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +30,14 @@
 <body>
     
     <div class="container my-5">
-       <form action="" method="GET">
+       <form method="GET">
             <div class="mb-3">
               <label for="psw_length" class="form-label">Password Generator</label>
               <input type="text" class="form-control" id="psw_length" placeholder="Enter Password Length" name="psw_length">
             </div> 
-              <input type="button" value="Generate Password">
+              <button @click:generate_pw()>Generate Password</button>
         </form>
+        <p><?= $pw ?></p>
     </div>
 
 </body>
