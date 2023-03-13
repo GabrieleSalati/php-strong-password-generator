@@ -3,7 +3,7 @@
 $length = $_GET["psw_length"];
 $pw = '';
 
-function generate_pw() {
+function generate_pw($length) {
   
   $password_length = $length;
   $pw = '';
@@ -35,9 +35,9 @@ function generate_pw() {
               <label for="psw_length" class="form-label">Password Generator</label>
               <input type="text" class="form-control" id="psw_length" placeholder="Enter Password Length" name="psw_length">
             </div> 
-              <button @click:generate_pw()>Generate Password</button>
+              <button @click="<?php generate_pw($length); ?>"()>Generate Password</button>
         </form>
-        <p><?= $pw ?></p>
+        <p><?php echo generate_pw($length); ?></p>
     </div>
 
 </body>
